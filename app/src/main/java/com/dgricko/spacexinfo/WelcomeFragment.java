@@ -46,7 +46,6 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         if (v.getId() == R.id.weclome_btn) {
             Log.d("WELCOME_LOG","Press Btn Start");
-
             navController.navigate(R.id.action_welcomeFragment_to_menuFragment);
         }
     }

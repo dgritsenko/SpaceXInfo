@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +21,8 @@ public class MenuFragment extends Fragment implements ProjectListAdapter.onItemL
     private SpaceProject[] projects;
     private RecyclerView projectsList;
     private  ProjectListAdapter projectListAdapter;
+
+    private NavController navController;
 
 
     public MenuFragment() {
@@ -36,6 +40,8 @@ public class MenuFragment extends Fragment implements ProjectListAdapter.onItemL
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        navController = Navigation.findNavController(view);
+
         projectsList = view.findViewById(R.id.project_list_view);
         projects = SpaceProject.projects;
 
@@ -49,5 +55,8 @@ public class MenuFragment extends Fragment implements ProjectListAdapter.onItemL
     @Override
     public void onClickListener(SpaceProject spaceProject, int position) {
         Log.d("MENU_LOG","Project " + spaceProject.getName());
+        if (spaceProject.getName().contains("Rockets")){
+            navController.navigate(R.id.action_menuFragment_to_rocketFragment);
+        }
     }
 }
