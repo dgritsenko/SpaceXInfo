@@ -2,6 +2,8 @@ package com.dgricko.spacexinfo;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -22,5 +24,14 @@ public class RocketFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_rocket, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        System.out.println("!In RocketFragment");
+
+        MainActivity mainActivity =(MainActivity) getActivity();
+        System.out.println(mainActivity.getRockets());
     }
 }

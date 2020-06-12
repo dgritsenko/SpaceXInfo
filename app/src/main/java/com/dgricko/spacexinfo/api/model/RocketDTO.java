@@ -66,4 +66,17 @@ public class RocketDTO {
     public void setFlickr_images(List<String> flickr_images) {
         this.flickr_images = flickr_images;
     }
+
+    @Override
+    public String toString() {
+        return "RocketDTO{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", wikipedia='" + wikipedia + '\'' +
+                ", company='" + company + '\'' +
+                ", country='" + country + '\'' +
+                ", flickr_images=" + flickr_images + "\n"+
+                '}';
+    }
 }
