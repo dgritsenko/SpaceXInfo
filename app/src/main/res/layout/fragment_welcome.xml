@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WelcomeFragment"
-    android:background="@drawable/welcome_background">
+    tools:context=".WelcomeFragment">
 
     <ImageView
         android:id="@+id/welcome_rocket"
@@ -49,7 +48,7 @@
         android:id="@+id/weclome_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="32dp"
         android:text="START"
         android:textStyle="bold"
         app:backgroundTint="#A264F5"
