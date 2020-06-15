@@ -52,6 +52,8 @@ public class RocketCardAdapter extends PagerAdapter {
         card_name.setText(rockets.get(position).getName());
         card_desc.setText(rockets.get(position).getDescription());
 
+        container.addView(view,0);
+
         return view;
     }
 
