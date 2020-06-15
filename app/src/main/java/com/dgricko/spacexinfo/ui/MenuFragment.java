@@ -61,6 +61,12 @@ public class MenuFragment extends Fragment implements ProjectListAdapter.onItemL
         Log.d("MENU_LOG","Project " + spaceProject.getName());
         if (spaceProject.getName().contains("Rockets")){
             navController.navigate(R.id.action_menuFragment_to_rocketFragment);
+        }else if (spaceProject.getName().contains("Dragons")){
+            navController.navigate(R.id.action_menuFragment_to_dragonFragment);
+        }else if (spaceProject.getName().contains("Ships")){
+            navController.navigate(R.id.action_menuFragment_to_shipFragment);
+        }else {
+            navController.navigate(R.id.action_menuFragment_to_crewFragment);
         }
     }
 }

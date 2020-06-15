@@ -6,7 +6,7 @@
     tools:context=".ui.RocketFragment">
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager"
+        android:id="@+id/view_pager_rockets"
         android:foregroundGravity="center"
         android:layout_centerInParent="true"
         android:overScrollMode="never"

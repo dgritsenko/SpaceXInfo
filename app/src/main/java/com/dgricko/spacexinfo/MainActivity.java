@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.dgricko.spacexinfo.api.model.CrewDTO;
+import com.dgricko.spacexinfo.api.model.DragonDTO;
 import com.dgricko.spacexinfo.api.model.RocketDTO;
+import com.dgricko.spacexinfo.api.model.ShipDTO;
 
 import java.util.List;
 
@@ -20,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     CompositeDisposable disposable = new CompositeDisposable();
 
     private List<RocketDTO>rockets;
+    private List<DragonDTO>dragons;
+    private List<CrewDTO>crews;
+    private List<ShipDTO>ships;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,44 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }));
+
+        disposable.add(app.getSpaceInfoService().getApi().getDragons()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BiConsumer<List<DragonDTO>, Throwable>() {
+                    @Override
+                    public void accept(List<DragonDTO> dragonDTOS, Throwable throwable) throws Exception {
+                        if (throwable!=null){
+                            Toast.makeText(MainActivity.this, "Data loading error", Toast.LENGTH_SHORT).show();
+                        }else {
+                            dragons = dragonDTOS;
+                        }
+                    }
+                }));
+
+        disposable.add(app.getSpaceInfoService().getApi().getCrews().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new BiConsumer<List<CrewDTO>, Throwable>() {
+            @Override
+            public void accept(List<CrewDTO> crewDTOS, Throwable throwable) throws Exception {
+                if (throwable!=null){
+                    Toast.makeText(MainActivity.this, "Data loading error", Toast.LENGTH_SHORT).show();
+                }else {
+                    crews = crewDTOS;
+                }
+            }
+        }));
+
+        disposable.add(app.getSpaceInfoService().getApi().getShips().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new BiConsumer<List<ShipDTO>, Throwable>() {
+            @Override
+            public void accept(List<ShipDTO> shipDTOS, Throwable throwable) throws Exception {
+                if (throwable!=null){
+                    Toast.makeText(MainActivity.this, "Data loading error", Toast.LENGTH_SHORT).show();
+                }else {
+                    ships = shipDTOS;
+                }
+            }
+        }));
     }
 
     @Override
@@ -53,5 +97,15 @@ public class MainActivity extends AppCompatActivity {
 
     public List<RocketDTO> getRockets(){
         return rockets;
+    }
+
+    public List<DragonDTO> getDragons(){
+        return dragons;
+    }
+
+    public List<CrewDTO> getCrews(){return crews;}
+
+    public List<ShipDTO> getShips(){
+        return ships;
     }
 }

@@ -49,7 +49,7 @@ public class RocketFragment extends Fragment {
         rockets = mainActivity.getRockets();
         adapter = new RocketCardAdapter(rockets,getContext());
 
-        viewPager = view.findViewById(R.id.view_pager);
+        viewPager = view.findViewById(R.id.view_pager_rockets);
         viewPager.setAdapter(adapter);
         viewPager.setPadding(50,0,50,0);
     }
