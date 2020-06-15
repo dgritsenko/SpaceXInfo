@@ -1,4 +1,4 @@
-package com.dgricko.spacexinfo;
+package com.dgricko.spacexinfo.ui;
 
 import android.os.Bundle;
 
@@ -10,8 +10,10 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 
+import com.dgricko.spacexinfo.MainActivity;
+import com.dgricko.spacexinfo.R;
+import com.dgricko.spacexinfo.adapters.RocketCardAdapter;
 import com.dgricko.spacexinfo.api.model.RocketDTO;
 
 import java.util.List;

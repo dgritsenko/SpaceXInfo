@@ -1,4 +1,4 @@
-package com.dgricko.spacexinfo;
+package com.dgricko.spacexinfo.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
+import com.dgricko.spacexinfo.R;
 import com.dgricko.spacexinfo.api.model.RocketDTO;
 
 import java.util.List;
@@ -48,7 +50,13 @@ public class RocketCardAdapter extends PagerAdapter {
         card_name = view.findViewById(R.id.card_name);
         card_desc = view.findViewById(R.id.card_desc);
 
-       // card_img.setImageResource(rockets.get(position).getFlickr_images());
+        List<String> imgs = rockets.get(position).getFlickr_images();
+        String prev_img = imgs.get(0);
+
+        Glide.with(view.getContext())
+                .load(prev_img)
+                .into(card_img);
+
         card_name.setText(rockets.get(position).getName());
         card_desc.setText(rockets.get(position).getDescription());
 

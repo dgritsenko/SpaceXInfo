@@ -1,4 +1,4 @@
-package com.dgricko.spacexinfo;
+package com.dgricko.spacexinfo.ui;
 
 import android.os.Bundle;
 
@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.dgricko.spacexinfo.R;
 
 public class WelcomeFragment extends Fragment implements View.OnClickListener{
 

@@ -1,4 +1,4 @@
-package com.dgricko.spacexinfo;
+package com.dgricko.spacexinfo.ui;
 
 import android.os.Bundle;
 
@@ -15,8 +15,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.dgricko.spacexinfo.ProjectListAdapter;
+import com.dgricko.spacexinfo.R;
+import com.dgricko.spacexinfo.SpaceProject;
 
-public class MenuFragment extends Fragment implements ProjectListAdapter.onItemListClick{
+
+public class MenuFragment extends Fragment implements ProjectListAdapter.onItemListClick {
 
     private SpaceProject[] projects;
     private RecyclerView projectsList;

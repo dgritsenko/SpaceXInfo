@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/welcomeFragment"
-        android:name="com.dgricko.spacexinfo.WelcomeFragment"
+        android:name="com.dgricko.spacexinfo.ui.WelcomeFragment"
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
@@ -16,16 +16,40 @@
     </fragment>
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.dgricko.spacexinfo.MenuFragment"
+        android:name="com.dgricko.spacexinfo.ui.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" >
         <action
             android:id="@+id/action_menuFragment_to_rocketFragment"
             app:destination="@id/rocketFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_crewFragment"
+            app:destination="@id/crewFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_dragonFragment"
+            app:destination="@id/dragonFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_shipFragment"
+            app:destination="@id/shipFragment" />
     </fragment>
     <fragment
         android:id="@+id/rocketFragment"
-        android:name="com.dgricko.spacexinfo.RocketFragment"
+        android:name="com.dgricko.spacexinfo.ui.RocketFragment"
         android:label="fragment_rocket"
         tools:layout="@layout/fragment_rocket" />
+    <fragment
+        android:id="@+id/crewFragment"
+        android:name="com.dgricko.spacexinfo.ui.CrewFragment"
+        android:label="fragment_crew"
+        tools:layout="@layout/fragment_crew" />
+    <fragment
+        android:id="@+id/dragonFragment"
+        android:name="com.dgricko.spacexinfo.ui.DragonFragment"
+        android:label="fragment_dragon"
+        tools:layout="@layout/fragment_dragon" />
+    <fragment
+        android:id="@+id/shipFragment"
+        android:name="com.dgricko.spacexinfo.ui.ShipFragment"
+        android:label="fragment_ship"
+        tools:layout="@layout/fragment_ship" />
 </navigation>
