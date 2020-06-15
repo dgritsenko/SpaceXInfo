@@ -1,5 +1,7 @@
 package com.dgricko.spacexinfo.ui;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,13 +14,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.dgricko.spacexinfo.R;
 
 public class WelcomeFragment extends Fragment implements View.OnClickListener{
 
     private Button startBtn;
+    private ImageView rocketView;
     private NavController navController;
 
 
@@ -40,6 +46,7 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener{
 
         navController = Navigation.findNavController(view);
         startBtn =view.findViewById(R.id.weclome_btn);
+        rocketView = view.findViewById(R.id.welcome_rocket);
 
         startBtn.setOnClickListener(this);
     }
@@ -48,7 +55,30 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v) {
         if (v.getId() == R.id.weclome_btn) {
             Log.d("WELCOME_LOG","Press Btn Start");
-            navController.navigate(R.id.action_welcomeFragment_to_menuFragment);
+            ObjectAnimator rotate_anim = ObjectAnimator.ofFloat(rocketView,"rotation",0f,-42f);
+            rotate_anim.setDuration(1500);
+
+            ObjectAnimator fly_anim = ObjectAnimator.ofFloat(rocketView,"translationY",0f,-1000f);
+            fly_anim.setDuration(3000);
+
+            AnimatorSet set = new AnimatorSet();
+            set.play(rotate_anim).before(fly_anim);
+            set.start();
+
+            Thread sleepThread = new Thread(){
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(4500);
+                    }catch (InterruptedException e){
+                        Log.e("WELCOME_FRAGMENT","sleep",e);
+                    }
+                    navController.navigate(R.id.action_welcomeFragment_to_menuFragment);
+
+                }
+            };
+            sleepThread.start();
+
         }
     }
 }
