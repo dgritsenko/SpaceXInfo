@@ -43,10 +43,11 @@ public class CrewCardAdapter extends PagerAdapter {
         View view = layoutInflater.inflate(R.layout.card_item,container,false);
 
         ImageView card_img;
-        TextView card_name, card_desc;
+        TextView card_name, card_wiki, card_desc;
 
         card_img = view.findViewById(R.id.card_image);
         card_name = view.findViewById(R.id.card_name);
+        card_wiki = view.findViewById(R.id.card_wiki);
         card_desc = view.findViewById(R.id.card_desc);
 
 
@@ -54,9 +55,11 @@ public class CrewCardAdapter extends PagerAdapter {
 
         Glide.with(view.getContext())
                 .load(prev_img)
+                .fitCenter()
                 .into(card_img);
 
         card_name.setText(crews.get(position).getName());
+        card_wiki.setText(crews.get(position).getWikipedia());
         card_desc.setText(crews.get(position).getAgency());
 
         container.addView(view,0);

@@ -46,10 +46,11 @@ public class DragonCardAdapter extends PagerAdapter {
         View view = layoutInflater.inflate(R.layout.card_item,container,false);
 
         ImageView card_img;
-        TextView card_name, card_desc;
+        TextView card_name, card_wiki, card_desc;
 
         card_img = view.findViewById(R.id.card_image);
         card_name = view.findViewById(R.id.card_name);
+        card_wiki = view.findViewById(R.id.card_wiki);
         card_desc = view.findViewById(R.id.card_desc);
 
         List<String>imgs = dragons.get(position).getFlickr_images();
@@ -57,9 +58,11 @@ public class DragonCardAdapter extends PagerAdapter {
 
         Glide.with(view.getContext())
                 .load(prev_img)
+                .placeholder(R.drawable.test_back)
                 .into(card_img);
 
         card_name.setText(dragons.get(position).getName());
+        card_wiki.setText(dragons.get(position).getWikipedia());
         card_desc.setText(dragons.get(position).getDescription());
 
         container.addView(view,0);
