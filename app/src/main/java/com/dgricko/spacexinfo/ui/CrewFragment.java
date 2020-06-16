@@ -1,5 +1,6 @@
 package com.dgricko.spacexinfo.ui;
 
+import android.animation.ArgbEvaluator;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,9 +14,11 @@ import android.view.ViewGroup;
 
 import com.dgricko.spacexinfo.MainActivity;
 import com.dgricko.spacexinfo.R;
+import com.dgricko.spacexinfo.RandomColor;
 import com.dgricko.spacexinfo.adapters.CrewCardAdapter;
 import com.dgricko.spacexinfo.api.model.CrewDTO;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class CrewFragment extends Fragment {
@@ -23,7 +26,9 @@ public class CrewFragment extends Fragment {
     private CrewCardAdapter adapter;
     private List<CrewDTO> crews;
 
-
+    private ArgbEvaluator argbEvaluator;
+    private RandomColor randomColor;
+    private Integer[] colors;
 
     public CrewFragment() {
         // Required empty public constructor
@@ -44,15 +49,50 @@ public class CrewFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         MainActivity mainActivity = (MainActivity) getActivity();
         crews = mainActivity.getCrews();
 
+
+        argbEvaluator = new ArgbEvaluator();
+        randomColor = new RandomColor();
+
         adapter = new CrewCardAdapter(crews,getContext());
         viewPager =view.findViewById(R.id.view_pager_crews);
         viewPager.setAdapter(adapter);
         viewPager.setPadding(50,0,50,0);
+
+        colors = randomColor.getRandomColors(crews.size());
+        System.out.println("!COLORS" + colors);
+
+
+       viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                if (position < (adapter.getCount()-1) && position < (colors.length-1)){
+                    viewPager.setBackgroundColor(
+                            (Integer)argbEvaluator.evaluate(
+                                    positionOffset,
+                                    colors[position],
+                                    colors[position+1]
+                            )
+                    );
+                }else {
+                    viewPager.setBackgroundColor(colors[colors.length-1]);
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 }
