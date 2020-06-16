@@ -56,10 +56,10 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener{
         if (v.getId() == R.id.weclome_btn) {
             Log.d("WELCOME_LOG","Press Btn Start");
             ObjectAnimator rotate_anim = ObjectAnimator.ofFloat(rocketView,"rotation",0f,-42f);
-            rotate_anim.setDuration(1500);
+            rotate_anim.setDuration(500);
 
             ObjectAnimator fly_anim = ObjectAnimator.ofFloat(rocketView,"translationY",0f,-1000f);
-            fly_anim.setDuration(3000);
+            fly_anim.setDuration(1500);
 
             AnimatorSet set = new AnimatorSet();
             set.play(rotate_anim).before(fly_anim);
@@ -69,7 +69,7 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener{
                 @Override
                 public void run() {
                     try {
-                        Thread.sleep(4500);
+                        Thread.sleep(2000);
                     }catch (InterruptedException e){
                         Log.e("WELCOME_FRAGMENT","sleep",e);
                     }

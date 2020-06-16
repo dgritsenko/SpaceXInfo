@@ -1,6 +1,7 @@
 package com.dgricko.spacexinfo.adapters;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,7 @@ public class DragonCardAdapter extends PagerAdapter {
         return view.equals(object);
     }
 
+    @SuppressLint("SetTextI18n")
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
@@ -46,11 +48,12 @@ public class DragonCardAdapter extends PagerAdapter {
         View view = layoutInflater.inflate(R.layout.card_item,container,false);
 
         ImageView card_img;
-        TextView card_name, card_wiki, card_desc;
+        TextView card_name, card_wiki, card_feature, card_desc;
 
         card_img = view.findViewById(R.id.card_image);
         card_name = view.findViewById(R.id.card_name);
         card_wiki = view.findViewById(R.id.card_wiki);
+        card_feature = view.findViewById(R.id.card_features);
         card_desc = view.findViewById(R.id.card_desc);
 
         List<String>imgs = dragons.get(position).getFlickr_images();
@@ -60,9 +63,14 @@ public class DragonCardAdapter extends PagerAdapter {
                 .load(prev_img)
                 .placeholder(R.drawable.test_back)
                 .into(card_img);
+        String capacity = "capacity:\t"+dragons.get(position).getCrew_capacity()+"\n";
+        String sidewall_angle_deg = "sidewall_angle_deg:\t"+ dragons.get(position).getSidewall_angle_deg()+"\n";
+        String orbit_duration_yr = "orbit_duration_yr:\t"+ dragons.get(position).getOrbit_duration_yr()+"\n";
+        String dry_mass_kg  = "dry_mass_kg:\t"+dragons.get(position).getDry_mass_kg();
 
         card_name.setText(dragons.get(position).getName());
         card_wiki.setText(dragons.get(position).getWikipedia());
+        card_feature.setText(capacity+sidewall_angle_deg+orbit_duration_yr+dry_mass_kg);
         card_desc.setText(dragons.get(position).getDescription());
 
         container.addView(view,0);

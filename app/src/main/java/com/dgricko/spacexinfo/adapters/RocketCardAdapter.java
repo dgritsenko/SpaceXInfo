@@ -1,5 +1,6 @@
 package com.dgricko.spacexinfo.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,7 @@ public class RocketCardAdapter extends PagerAdapter {
         return view.equals(object);
     }
 
+    @SuppressLint("SetTextI18n")
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
@@ -44,11 +46,12 @@ public class RocketCardAdapter extends PagerAdapter {
         View view = layoutInflater.inflate(R.layout.card_item,container,false);
 
         ImageView card_img;
-        TextView card_name, card_wiki, card_desc;
+        TextView card_name, card_wiki,card_feature, card_desc;
 
         card_img = view.findViewById(R.id.card_image);
         card_name = view.findViewById(R.id.card_name);
         card_wiki = view.findViewById(R.id.card_wiki);
+        card_feature = view.findViewById(R.id.card_features);
         card_desc = view.findViewById(R.id.card_desc);
 
         List<String> imgs = rockets.get(position).getFlickr_images();
@@ -56,10 +59,15 @@ public class RocketCardAdapter extends PagerAdapter {
 
         Glide.with(view.getContext())
                 .load(prev_img)
+                .placeholder(R.drawable.test_back)
                 .into(card_img);
+
+        String company = "company:\t"+rockets.get(position).getCompany()+"\n";
+        String country = "country:\t"+rockets.get(position).getCountry();
 
         card_name.setText(rockets.get(position).getName());
         card_wiki.setText(rockets.get(position).getWikipedia());
+        card_feature.setText(company+country);
         card_desc.setText(rockets.get(position).getDescription());
 
         container.addView(view,0);

@@ -23,6 +23,8 @@ public class CrewFragment extends Fragment {
     private CrewCardAdapter adapter;
     private List<CrewDTO> crews;
 
+
+
     public CrewFragment() {
         // Required empty public constructor
     }
