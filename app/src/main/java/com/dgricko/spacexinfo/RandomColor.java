@@ -13,9 +13,9 @@ public class RandomColor {
     Random random = new Random();
 
 
-    public Integer[] getRandomColors(int size) {
-        Integer[] arrColors = new Integer[size];
-        for (int i = 0; i<size;i++){
+    public Integer[] getRandomColors(int colorsNum) {
+        Integer[] arrColors = new Integer[colorsNum];
+        for (int i = 0; i<colorsNum;i++){
             int r = random.nextInt(255);
             int g = random.nextInt(255);
             int b = random.nextInt(255);
