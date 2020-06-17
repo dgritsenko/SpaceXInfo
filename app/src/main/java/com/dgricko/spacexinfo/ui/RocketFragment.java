@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.dgricko.spacexinfo.MainActivity;
 import com.dgricko.spacexinfo.R;
@@ -31,6 +32,7 @@ public class RocketFragment extends Fragment {
     private RandomColor randomColor;
     private Integer[] colors;
 
+    private Button btnOpenPic;
 
     public RocketFragment() {
         // Required empty public constructor
@@ -62,6 +64,8 @@ public class RocketFragment extends Fragment {
         viewPager.setAdapter(adapter);
         viewPager.setPadding(50,0,50,0);
 
+        btnOpenPic = view.findViewById(R.id.btn_open_pic);
+
         colors = randomColor.getRandomColors(rockets.size());
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -88,6 +92,13 @@ public class RocketFragment extends Fragment {
             @Override
             public void onPageScrollStateChanged(int state) {
 
+            }
+        });
+
+        btnOpenPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("!Press BTN");
             }
         });
     }

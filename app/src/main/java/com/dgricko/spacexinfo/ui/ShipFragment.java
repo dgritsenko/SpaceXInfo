@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.dgricko.spacexinfo.MainActivity;
 import com.dgricko.spacexinfo.R;
@@ -29,6 +30,8 @@ public class ShipFragment extends Fragment {
     private ArgbEvaluator argbEvaluator;
     private RandomColor randomColor;
     private Integer[] colors;
+
+    private Button btnOpenPic;
 
     public ShipFragment() {
         // Required empty public constructor
@@ -62,6 +65,8 @@ public class ShipFragment extends Fragment {
         viewPager.setAdapter(adapter);
         viewPager.setPadding(50,0,50,0);
 
+        btnOpenPic = view.findViewById(R.id.btn_open_pic);
+
         colors = randomColor.getRandomColors(ships.size());
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -88,6 +93,13 @@ public class ShipFragment extends Fragment {
             @Override
             public void onPageScrollStateChanged(int state) {
 
+            }
+        });
+
+        btnOpenPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("!Press BTN");
             }
         });
     }
