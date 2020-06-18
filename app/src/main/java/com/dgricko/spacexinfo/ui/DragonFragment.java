@@ -53,6 +53,8 @@ public class DragonFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_dragon, container, false);
+
+
     }
 
     @Override
@@ -61,6 +63,8 @@ public class DragonFragment extends Fragment {
 
         MainActivity mainActivity = (MainActivity) getActivity();
         dragons = mainActivity.getDragons();
+
+        ((MainActivity)getActivity()).setImagesForGallery(dragons.get(0).getFlickr_images());
 
         argbEvaluator = new ArgbEvaluator();
         randomColor = new RandomColor();

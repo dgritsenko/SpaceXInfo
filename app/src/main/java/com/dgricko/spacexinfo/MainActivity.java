@@ -27,6 +27,16 @@ public class MainActivity extends AppCompatActivity {
     private List<CrewDTO>crews;
     private List<ShipDTO>ships;
 
+    private List<String> imagesForGallery;
+
+    public List<String> getImagesForGallery() {
+        return imagesForGallery;
+    }
+
+    public void setImagesForGallery(List<String> imagesForGallery) {
+        this.imagesForGallery = imagesForGallery;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

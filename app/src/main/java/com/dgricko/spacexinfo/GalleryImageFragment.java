@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class GalleryImageFragment extends Fragment {
@@ -61,5 +62,21 @@ public class GalleryImageFragment extends Fragment {
 
         adapter = new GalleryAdapter(images,getContext());
         recyclerView.setAdapter(adapter);
+
+        recyclerView.addOnItemTouchListener(new GalleryAdapter.RecyclerTouchListener(getContext(), recyclerView, new GalleryAdapter.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                System.out.println("!CLICK img!!");
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+
+
+        List<String> imgs = ((MainActivity)getActivity()).getImagesForGallery();
+        System.out.println("!IMGD"+imgs);
     }
 }
