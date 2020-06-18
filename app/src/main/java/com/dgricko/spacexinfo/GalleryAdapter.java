@@ -11,13 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
-public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHolder> {
-    private List<String> images = new ArrayList<>();
+public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder> {
+    private List<String> images;
     private Context context;
 
     public GalleryAdapter(List<String> images, Context context) {
@@ -27,20 +26,19 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GalleryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.gallery_image_item,parent,false);
-        return new MyViewHolder(view);
+        return new GalleryViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GalleryViewHolder holder, int position) {
         String image = images.get(position);
 
         Glide.with(context).load(image)
-                .thumbnail(0.5f)
+                .thumbnail(1f)
                 .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.thumbnail);
     }
 
@@ -49,10 +47,10 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
         return images.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class GalleryViewHolder extends RecyclerView.ViewHolder{
 
         ImageView thumbnail;
-        public MyViewHolder(@NonNull View itemView) {
+        public GalleryViewHolder(@NonNull View itemView) {
             super(itemView);
 
             thumbnail = (ImageView) itemView.findViewById(R.id.gallery_thumbnail);

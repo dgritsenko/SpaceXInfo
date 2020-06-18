@@ -36,20 +36,41 @@
         android:id="@+id/rocketFragment"
         android:name="com.dgricko.spacexinfo.ui.RocketFragment"
         android:label="fragment_rocket"
-        tools:layout="@layout/fragment_rocket" />
+        tools:layout="@layout/fragment_rocket" >
+        <action
+            android:id="@+id/action_rocketFragment_to_galleryImageFragment"
+            app:destination="@id/galleryImageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/crewFragment"
         android:name="com.dgricko.spacexinfo.ui.CrewFragment"
         android:label="fragment_crew"
-        tools:layout="@layout/fragment_crew" />
+        tools:layout="@layout/fragment_crew" >
+        <action
+            android:id="@+id/action_crewFragment_to_galleryImageFragment"
+            app:destination="@id/galleryImageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/dragonFragment"
         android:name="com.dgricko.spacexinfo.ui.DragonFragment"
         android:label="fragment_dragon"
-        tools:layout="@layout/fragment_dragon" />
+        tools:layout="@layout/fragment_dragon" >
+        <action
+            android:id="@+id/action_dragonFragment_to_galleryImageFragment"
+            app:destination="@id/galleryImageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/shipFragment"
         android:name="com.dgricko.spacexinfo.ui.ShipFragment"
         android:label="fragment_ship"
-        tools:layout="@layout/fragment_ship" />
+        tools:layout="@layout/fragment_ship" >
+        <action
+            android:id="@+id/action_shipFragment_to_galleryImageFragment"
+            app:destination="@id/galleryImageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/galleryImageFragment"
+        android:name="com.dgricko.spacexinfo.GalleryImageFragment"
+        android:label="fragment_gallery_image"
+        tools:layout="@layout/fragment_gallery_image" />
 </navigation>

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
@@ -27,6 +29,8 @@ public class DragonFragment extends Fragment {
     private ViewPager viewPager;
     private DragonCardAdapter adapter;
     private List<DragonDTO> dragons;
+
+    private NavController navController;
 
     private ArgbEvaluator argbEvaluator;
     private RandomColor randomColor;
@@ -66,6 +70,10 @@ public class DragonFragment extends Fragment {
         viewPager.setAdapter(adapter);
         viewPager.setPadding(50,0,50,0);
 
+        navController = Navigation.findNavController(view);
+
+
+
         btnOpenPic = view.findViewById(R.id.btn_open_pic);
 
         colors = randomColor.getRandomColors(dragons.size());
@@ -101,6 +109,7 @@ public class DragonFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 System.out.println("!Press BTN");
+                navController.navigate(R.id.action_dragonFragment_to_galleryImageFragment);
             }
         });
     }
