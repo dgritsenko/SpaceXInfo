@@ -46,6 +46,10 @@ public class GalleryImageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
+        final List<String> imgs = ((MainActivity)getActivity()).getImagesForGallery();
+        System.out.println("!IMGD"+imgs);
+
         ArrayList<String> strImg = new ArrayList<>();
         strImg.add("https://farm9.staticflickr.com/8618/16649075267_d18cbb4342_b.jpg");
         strImg.add("https://farm9.staticflickr.com/8618/16649075267_d18cbb4342_b.jpg");
@@ -67,6 +71,7 @@ public class GalleryImageFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 System.out.println("!CLICK img!!");
+                PhotoActivity.start(view.getContext(),imgs.get(position));
             }
 
             @Override
@@ -76,7 +81,5 @@ public class GalleryImageFragment extends Fragment {
         }));
 
 
-        List<String> imgs = ((MainActivity)getActivity()).getImagesForGallery();
-        System.out.println("!IMGD"+imgs);
     }
 }
