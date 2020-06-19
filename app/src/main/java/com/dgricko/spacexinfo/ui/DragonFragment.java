@@ -38,6 +38,8 @@ public class DragonFragment extends Fragment {
 
     private Button btnOpenPic;
 
+
+
     public DragonFragment() {
         // Required empty public constructor
     }
@@ -64,7 +66,8 @@ public class DragonFragment extends Fragment {
         MainActivity mainActivity = (MainActivity) getActivity();
         dragons = mainActivity.getDragons();
 
-        ((MainActivity)getActivity()).setImagesForGallery(dragons.get(0).getFlickr_images());
+
+        ((MainActivity)getActivity()).setImagesForGallery(mainActivity.getAllPhotoFromDragons());
 
         argbEvaluator = new ArgbEvaluator();
         randomColor = new RandomColor();
@@ -112,7 +115,7 @@ public class DragonFragment extends Fragment {
         btnOpenPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("!Press BTN");
+
                 navController.navigate(R.id.action_dragonFragment_to_galleryImageFragment);
             }
         });

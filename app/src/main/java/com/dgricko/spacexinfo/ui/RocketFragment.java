@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
@@ -34,6 +36,8 @@ public class RocketFragment extends Fragment {
 
     private Button btnOpenPic;
 
+    private NavController navController;
+
     public RocketFragment() {
         // Required empty public constructor
     }
@@ -54,6 +58,9 @@ public class RocketFragment extends Fragment {
         MainActivity mainActivity =(MainActivity) getActivity();
         System.out.println(mainActivity.getRockets());
 
+
+        ((MainActivity)getActivity()).setImagesForGallery(mainActivity.getAllPhotoFromRockets());
+
         argbEvaluator = new ArgbEvaluator();
         randomColor = new RandomColor();
 
@@ -63,6 +70,8 @@ public class RocketFragment extends Fragment {
         viewPager = view.findViewById(R.id.view_pager_rockets);
         viewPager.setAdapter(adapter);
         viewPager.setPadding(50,0,50,0);
+
+        navController = Navigation.findNavController(view);
 
         btnOpenPic = view.findViewById(R.id.btn_open_pic);
 
@@ -98,7 +107,7 @@ public class RocketFragment extends Fragment {
         btnOpenPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("!Press BTN");
+                navController.navigate(R.id.action_rocketFragment_to_galleryImageFragment);
             }
         });
     }

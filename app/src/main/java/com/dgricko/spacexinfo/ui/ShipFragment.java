@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
@@ -33,6 +35,8 @@ public class ShipFragment extends Fragment {
 
     private Button btnOpenPic;
 
+    private NavController navController;
+
     public ShipFragment() {
         // Required empty public constructor
     }
@@ -57,6 +61,9 @@ public class ShipFragment extends Fragment {
         MainActivity mainActivity = (MainActivity)getActivity();
         ships = mainActivity.getShips();
 
+        ((MainActivity)getActivity()).setImagesForGallery(mainActivity.getAllPhotoFromShips());
+
+
         argbEvaluator = new ArgbEvaluator();
         randomColor = new RandomColor();
 
@@ -64,6 +71,8 @@ public class ShipFragment extends Fragment {
         viewPager = view.findViewById(R.id.view_pager_ships);
         viewPager.setAdapter(adapter);
         viewPager.setPadding(50,0,50,0);
+
+        navController = Navigation.findNavController(view);
 
         btnOpenPic = view.findViewById(R.id.btn_open_pic);
 
@@ -99,7 +108,7 @@ public class ShipFragment extends Fragment {
         btnOpenPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("!Press BTN");
+                navController.navigate(R.id.action_shipFragment_to_galleryImageFragment);
             }
         });
     }

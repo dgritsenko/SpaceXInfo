@@ -10,6 +10,7 @@ import com.dgricko.spacexinfo.api.model.DragonDTO;
 import com.dgricko.spacexinfo.api.model.RocketDTO;
 import com.dgricko.spacexinfo.api.model.ShipDTO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Scheduler;
@@ -118,4 +119,49 @@ public class MainActivity extends AppCompatActivity {
     public List<ShipDTO> getShips(){
         return ships;
     }
+
+
+
+    public List<String> getAllPhotoFromDragons(){
+        List<String> allImgs = new ArrayList<>();
+        for (int i = 0; i<dragons.size();i++){
+
+            for (String imgages: dragons.get(i).getFlickr_images()){
+                System.out.println("IM"+imgages);
+                allImgs.add((String) imgages);
+            }
+        }
+        return allImgs;
+    }
+
+    public List<String> getAllPhotoFromRockets(){
+        List<String> allImgs = new ArrayList<>();
+        for (int i = 0; i<rockets.size();i++){
+
+            for (String imgages: rockets.get(i).getFlickr_images()){
+                System.out.println("IM"+imgages);
+                allImgs.add((String) imgages);
+            }
+        }
+        return allImgs;
+    }
+
+    public List<String> getAllPhotoFromShips(){
+        List<String> allImgs = new ArrayList<>();
+        for (int i = 0; i<ships.size();i++){
+
+            allImgs.add(ships.get(i).getImage());
+        }
+        return allImgs;
+    }
+
+    public List<String> getAllPhotoFromCrew(){
+        List<String> allImgs = new ArrayList<>();
+        for (int i = 0; i<crews.size();i++){
+
+            allImgs.add(crews.get(i).getImage());
+        }
+        return allImgs;
+    }
+
 }

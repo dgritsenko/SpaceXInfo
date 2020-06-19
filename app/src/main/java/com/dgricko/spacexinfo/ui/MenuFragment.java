@@ -15,7 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.dgricko.spacexinfo.ProjectListAdapter;
+import com.dgricko.spacexinfo.adapters.ProjectListAdapter;
 import com.dgricko.spacexinfo.R;
 import com.dgricko.spacexinfo.SpaceProject;
 

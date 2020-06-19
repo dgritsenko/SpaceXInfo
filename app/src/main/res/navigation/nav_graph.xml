@@ -70,7 +70,7 @@
     </fragment>
     <fragment
         android:id="@+id/galleryImageFragment"
-        android:name="com.dgricko.spacexinfo.GalleryImageFragment"
+        android:name="com.dgricko.spacexinfo.ui.GalleryImageFragment"
         android:label="fragment_gallery_image"
         tools:layout="@layout/fragment_gallery_image" />
 </navigation>

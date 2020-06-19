@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
@@ -33,6 +35,8 @@ public class CrewFragment extends Fragment {
 
     private Button btnOpenPic;
 
+    private NavController navController;
+
     public CrewFragment() {
         // Required empty public constructor
     }
@@ -58,6 +62,8 @@ public class CrewFragment extends Fragment {
         MainActivity mainActivity = (MainActivity) getActivity();
         crews = mainActivity.getCrews();
 
+        ((MainActivity)getActivity()).setImagesForGallery(mainActivity.getAllPhotoFromCrew());
+
 
         argbEvaluator = new ArgbEvaluator();
         randomColor = new RandomColor();
@@ -70,7 +76,8 @@ public class CrewFragment extends Fragment {
 
         btnOpenPic = view.findViewById(R.id.btn_open_pic);
         colors = randomColor.getRandomColors(crews.size());
-        System.out.println("!COLORS" + colors);
+
+        navController = Navigation.findNavController(view);
 
 
        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -103,7 +110,7 @@ public class CrewFragment extends Fragment {
        btnOpenPic.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               System.out.println("!Press BTN");
+              navController.navigate(R.id.action_crewFragment_to_galleryImageFragment);
            }
        });
     }

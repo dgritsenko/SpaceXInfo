@@ -1,4 +1,4 @@
-package com.dgricko.spacexinfo;
+package com.dgricko.spacexinfo.ui;
 
 import android.os.Bundle;
 
@@ -11,6 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.dgricko.spacexinfo.adapters.GalleryAdapter;
+import com.dgricko.spacexinfo.MainActivity;
+import com.dgricko.spacexinfo.PhotoActivity;
+import com.dgricko.spacexinfo.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,16 +52,11 @@ public class GalleryImageFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        final List<String> imgs = ((MainActivity)getActivity()).getImagesForGallery();
-        System.out.println("!IMGD"+imgs);
+        final List<String> imagesForGallery = ((MainActivity)getActivity()).getImagesForGallery();
 
-        ArrayList<String> strImg = new ArrayList<>();
-        strImg.add("https://farm9.staticflickr.com/8618/16649075267_d18cbb4342_b.jpg");
-        strImg.add("https://farm9.staticflickr.com/8618/16649075267_d18cbb4342_b.jpg");
-        strImg.add("https://farm9.staticflickr.com/8618/16649075267_d18cbb4342_b.jpg");
-        strImg.add("https://farm9.staticflickr.com/8618/16649075267_d18cbb4342_b.jpg");
 
-        images = strImg;
+
+        images = (ArrayList<String>) imagesForGallery;
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         layoutManager = new GridLayoutManager(getContext(),2);
@@ -70,8 +70,8 @@ public class GalleryImageFragment extends Fragment {
         recyclerView.addOnItemTouchListener(new GalleryAdapter.RecyclerTouchListener(getContext(), recyclerView, new GalleryAdapter.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                System.out.println("!CLICK img!!");
-                PhotoActivity.start(view.getContext(),imgs.get(position));
+
+                PhotoActivity.start(view.getContext(),imagesForGallery.get(position));
             }
 
             @Override

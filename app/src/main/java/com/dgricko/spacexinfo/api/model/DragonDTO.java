@@ -93,4 +93,20 @@ public class DragonDTO {
     public void setFlickr_images(List<String> flickr_images) {
         this.flickr_images = flickr_images;
     }
+
+    @Override
+    public String toString() {
+        return "DragonDTO{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", crew_capacity=" + crew_capacity +
+                ", sidewall_angle_deg=" + sidewall_angle_deg +
+                ", orbit_duration_yr=" + orbit_duration_yr +
+                ", dry_mass_kg=" + dry_mass_kg +
+                ", wikipedia='" + wikipedia + '\'' +
+                ", description='" + description + '\'' +
+                ", flickr_images=" + flickr_images +
+                '}'+"\n";
+    }
 }

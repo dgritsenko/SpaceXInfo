@@ -1,16 +1,16 @@
-package com.dgricko.spacexinfo;
+package com.dgricko.spacexinfo.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.File;
+import com.dgricko.spacexinfo.R;
+import com.dgricko.spacexinfo.SpaceProject;
 
 public class ProjectListAdapter extends RecyclerView.Adapter<ProjectListAdapter.ProjectViewHolder> {
     private SpaceProject[] projects;
