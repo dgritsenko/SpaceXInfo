@@ -1,9 +1,10 @@
 package com.dgricko.spacexinfo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.dgricko.spacexinfo.api.model.CrewDTO;
 import com.dgricko.spacexinfo.api.model.DragonDTO;
@@ -13,7 +14,6 @@ import com.dgricko.spacexinfo.api.model.ShipDTO;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.BiConsumer;
@@ -22,6 +22,7 @@ import io.reactivex.schedulers.Schedulers;
 public class MainActivity extends AppCompatActivity {
 
     CompositeDisposable disposable = new CompositeDisposable();
+
 
     private List<RocketDTO>rockets;
     private List<DragonDTO>dragons;
@@ -40,10 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        initStrictMode();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         App app = (App) getApplication();
+
 
         disposable.add(app.getSpaceInfoService().getApi().getRockets()
                 .subscribeOn(Schedulers.io())
@@ -58,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
                             rockets = rocketDTOS;
                         }
                     }
+
+
                 }));
 
         disposable.add(app.getSpaceInfoService().getApi().getDragons()
@@ -97,6 +102,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }));
+
+    }
+    private void initStrictMode(){
+
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+
+                .detectAll()
+                .penaltyLog()
+                .build());
     }
 
     @Override
@@ -127,7 +141,6 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i<dragons.size();i++){
 
             for (String imgages: dragons.get(i).getFlickr_images()){
-                System.out.println("IM"+imgages);
                 allImgs.add((String) imgages);
             }
         }
@@ -139,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i<rockets.size();i++){
 
             for (String imgages: rockets.get(i).getFlickr_images()){
-                System.out.println("IM"+imgages);
                 allImgs.add((String) imgages);
             }
         }
@@ -149,7 +161,6 @@ public class MainActivity extends AppCompatActivity {
     public List<String> getAllPhotoFromShips(){
         List<String> allImgs = new ArrayList<>();
         for (int i = 0; i<ships.size();i++){
-
             allImgs.add(ships.get(i).getImage());
         }
         return allImgs;
@@ -158,7 +169,6 @@ public class MainActivity extends AppCompatActivity {
     public List<String> getAllPhotoFromCrew(){
         List<String> allImgs = new ArrayList<>();
         for (int i = 0; i<crews.size();i++){
-
             allImgs.add(crews.get(i).getImage());
         }
         return allImgs;

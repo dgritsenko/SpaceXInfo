@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -30,6 +31,7 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener{
 
     public WelcomeFragment() {
         // Required empty public constructor
+
     }
 
 
@@ -49,6 +51,16 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener{
         rocketView = view.findViewById(R.id.welcome_rocket);
 
         startBtn.setOnClickListener(this);
+
+
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        startBtn.setEnabled(true);
+
     }
 
     @Override
@@ -64,6 +76,7 @@ public class WelcomeFragment extends Fragment implements View.OnClickListener{
             AnimatorSet set = new AnimatorSet();
             set.play(rotate_anim).before(fly_anim);
             set.start();
+            startBtn.setEnabled(false);
 
             Thread sleepThread = new Thread(){
                 @Override

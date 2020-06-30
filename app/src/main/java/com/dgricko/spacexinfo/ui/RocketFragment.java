@@ -53,10 +53,10 @@ public class RocketFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        System.out.println("!In RocketFragment");
+
 
         MainActivity mainActivity =(MainActivity) getActivity();
-        System.out.println(mainActivity.getRockets());
+
 
 
         ((MainActivity)getActivity()).setImagesForGallery(mainActivity.getAllPhotoFromRockets());

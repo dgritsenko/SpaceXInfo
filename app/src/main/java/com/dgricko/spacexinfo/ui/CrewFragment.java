@@ -2,6 +2,10 @@ package com.dgricko.spacexinfo.ui;
 
 import android.animation.ArgbEvaluator;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -10,18 +14,12 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.viewpager.widget.ViewPager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-
 import com.dgricko.spacexinfo.MainActivity;
 import com.dgricko.spacexinfo.R;
 import com.dgricko.spacexinfo.RandomColor;
 import com.dgricko.spacexinfo.adapters.CrewCardAdapter;
 import com.dgricko.spacexinfo.api.model.CrewDTO;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class CrewFragment extends Fragment {
