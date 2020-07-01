@@ -1,6 +1,7 @@
 package com.dgricko.spacexinfo.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;

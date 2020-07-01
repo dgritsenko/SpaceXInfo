@@ -140,8 +140,8 @@ public class MainActivity extends AppCompatActivity {
         List<String> allImgs = new ArrayList<>();
         for (int i = 0; i<dragons.size();i++){
 
-            for (String imgages: dragons.get(i).getFlickr_images()){
-                allImgs.add((String) imgages);
+            for (String imgs: dragons.get(i).getFlickr_images()){
+                allImgs.add((String) imgs);
             }
         }
         return allImgs;
@@ -151,8 +151,8 @@ public class MainActivity extends AppCompatActivity {
         List<String> allImgs = new ArrayList<>();
         for (int i = 0; i<rockets.size();i++){
 
-            for (String imgages: rockets.get(i).getFlickr_images()){
-                allImgs.add((String) imgages);
+            for (String imgs: rockets.get(i).getFlickr_images()){
+                allImgs.add((String) imgs);
             }
         }
         return allImgs;
@@ -161,7 +161,9 @@ public class MainActivity extends AppCompatActivity {
     public List<String> getAllPhotoFromShips(){
         List<String> allImgs = new ArrayList<>();
         for (int i = 0; i<ships.size();i++){
-            allImgs.add(ships.get(i).getImage());
+            if (ships.get(i).getImage()!=null) {
+                allImgs.add(ships.get(i).getImage());
+            }
         }
         return allImgs;
     }
@@ -169,7 +171,9 @@ public class MainActivity extends AppCompatActivity {
     public List<String> getAllPhotoFromCrew(){
         List<String> allImgs = new ArrayList<>();
         for (int i = 0; i<crews.size();i++){
-            allImgs.add(crews.get(i).getImage());
+            if (crews.get(i).getImage()!=null) {
+                allImgs.add(crews.get(i).getImage());
+            }
         }
         return allImgs;
     }

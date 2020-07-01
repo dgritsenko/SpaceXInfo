@@ -12,3 +12,6 @@
 /captures
 .externalNativeBuild
 .cxx
+Будет удалено libs/
+Будет удалено .idea/vcs.xml
+Будет удалено app/libs/

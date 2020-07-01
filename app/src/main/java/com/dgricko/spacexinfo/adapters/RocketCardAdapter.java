@@ -59,7 +59,7 @@ public class RocketCardAdapter extends PagerAdapter {
 
         Glide.with(view.getContext())
                 .load(prev_img)
-                .placeholder(R.drawable.test_back)
+                .placeholder(R.drawable.no_image_available)
                 .into(card_img);
 
         String company = "company:\t"+rockets.get(position).getCompany()+"\n";

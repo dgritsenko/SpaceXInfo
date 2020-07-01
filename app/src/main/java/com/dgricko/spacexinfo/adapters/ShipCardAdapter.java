@@ -2,6 +2,7 @@ package com.dgricko.spacexinfo.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,8 +55,10 @@ public class ShipCardAdapter extends PagerAdapter {
 
         String prev_img = ships.get(position).getImage();
 
+
         Glide.with(view.getContext())
                 .load(prev_img)
+                .placeholder(R.drawable.no_image_available)
                 .into(card_img);
 
         String home_port ="home_port:\t"+ ships.get(position).getHome_port()+"\n";

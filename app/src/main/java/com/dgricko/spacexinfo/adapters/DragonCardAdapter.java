@@ -61,7 +61,7 @@ public class DragonCardAdapter extends PagerAdapter {
 
         Glide.with(view.getContext())
                 .load(prev_img)
-                .placeholder(R.drawable.test_back)
+                .placeholder(R.drawable.no_image_available)
                 .into(card_img);
         String capacity = "capacity:\t"+dragons.get(position).getCrew_capacity()+"\n";
         String sidewall_angle_deg = "sidewall_angle_deg:\t"+ dragons.get(position).getSidewall_angle_deg()+"\n";

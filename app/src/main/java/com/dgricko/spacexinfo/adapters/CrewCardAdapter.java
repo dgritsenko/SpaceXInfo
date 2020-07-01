@@ -56,6 +56,7 @@ public class CrewCardAdapter extends PagerAdapter {
         Glide.with(view.getContext())
                 .load(prev_img)
                 .fitCenter()
+                .placeholder(R.drawable.no_image_available)
                 .into(card_img);
 
         card_name.setText(crews.get(position).getName());
