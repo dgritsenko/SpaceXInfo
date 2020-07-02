@@ -23,10 +23,3 @@ ___
 * Crew  `GET /crew`
 * Ships `GET /ships`
 * Dragonds `GET /dragons`
-
-## Libraries
-* Material Design Components
-* Android Jetpack Navigation
-* RxJava
-* Retrofit
-* OkHTTP
